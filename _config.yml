@@ -6,7 +6,7 @@ permalink: /:categories/:year/:month/:day/:title/
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 # auto: true
-highlighter: pygments
+highlighter: rouge
 paginate: 5
 
 title : 做好现在的事儿

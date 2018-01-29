@@ -1,8 +1,8 @@
 ---
 layout: page
-title: stormzhang博客精华
-keywords: stormzhang, storm, android, java, android developer, android开发, android技术分享, performance
-description: Focus Android, Love Open Source, Performance Optimization, Coding now
+title: Captain博客精华
+keywords: Captain, javascript, java, php developer, 前端开发, 前端技术分享, performance
+description: Focus 前端开发, Love Open Source, Performance Optimization, Coding now
 categories: [Android]
 ---
 {% include codepiano/setup %}

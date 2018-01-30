@@ -9,10 +9,10 @@ exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 highlighter: rouge
 paginate: 5
 
-title : 做好现在的事儿
+title : 小赢靠智 大赢靠德
 tagline: 爱生活，爱技术，爱科技，爱折腾
 author :
-  name : littlecaptain
+  name : Little Captain
   description: front-end Developer, Like OpenSource
   email : yanchao150054@gmail.com
   github : https://github.com/yanchao123456
@@ -27,7 +27,7 @@ author :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://yanchao.com
+production_url : https://yanchao123456.github.io
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
@@ -84,7 +84,7 @@ codepiano :
   comments :
     provider : disqus
     disqus :
-      short_name : stormsblog
+      short_name : yanchaoblog
    
   # Settings for analytics helper
   # Set 'provider' to the analytics provider you want to use.
@@ -101,7 +101,7 @@ codepiano :
   # Set 'provider' to false to turn sharing off globally.
   #
   sharing :
-    provider : false
+    provider : true
     
   # Settings for all other include helpers can be defined by creating 
   # a hash with key named for the given helper. ex:

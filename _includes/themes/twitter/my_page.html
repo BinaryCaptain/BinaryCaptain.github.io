@@ -23,7 +23,7 @@
     <link href="/css/solarized.css" rel="stylesheet" type="text/css" media="all">
     <link href="/css/datatables-bootstrap.css" rel="stylesheet">
     <link href="/css/codepiano.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
     <!-- javascript files -->
     <script type="text/javascript" src="/js/jquery-2.0.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
@@ -31,6 +31,7 @@
     <script type="text/javascript" src="/js/datatables-bootstrap.js"></script>
     <script type="text/javascript" src="/js/codepiano.js"></script>
 
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
     <!-- Le fav and touch icons -->
     <!-- Update these with your own images
     <link rel="shortcut icon" href="images/favicon.ico">
@@ -43,7 +44,17 @@
     <link href="{{ BASE_PATH }}{{ site.codepiano.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <link href="{{ BASE_PATH }}{{ site.codepiano.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
 
-    <script type="text/javascript">
+    <script>
+        var gitment = new Gitment({
+          id: 'location.href', // 可选。默认为 location.href
+          owner: 'yanchao123456',
+          repo: 'yanchao123456.github.io',
+          oauth: {
+            client_id: '1c1fd40328514392d2f9',
+            client_secret: '397008cf7b9a2d3b150c3bb2e964ba97b4ce4bde',
+          },
+        })
+        gitment.render('container')
     </script>
 
   </head>
@@ -78,19 +89,7 @@
       
     {% include codepiano/analytics %}
     <div id="container"></div>
-    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-    <script>
-        var gitment = new Gitment({
-          id: 'location.href', // 可选。默认为 location.href
-          owner: 'yanchao123456',
-          repo: 'yanchao123456.github.io',
-          oauth: {
-            client_id: '1c1fd40328514392d2f9',
-            client_secret: '397008cf7b9a2d3b150c3bb2e964ba97b4ce4bde',
-          },
-        })
-        gitment.render('container')
-    </script>
+
+    
   </body>
 </html>

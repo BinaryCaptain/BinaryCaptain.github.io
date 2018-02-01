@@ -100,7 +100,7 @@ codepiano :
   # Set 'provider' to the sharing provider you want to use.
   # Set 'provider' to false to turn sharing off globally.
   #
-  sharing : true
+  sharing : 
     provider : true
     
   # Settings for all other include helpers can be defined by creating 

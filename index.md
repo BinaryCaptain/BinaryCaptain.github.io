@@ -11,7 +11,9 @@ categories: [Android]
 
 [如何实现一个Virtual DOM算法](http://stormzhang.com/weekly/2016/08/08/android-developer-weekly-no-4/)
 
-[各种排序算法总结」](http://stormzhang.com/opensource/2016/08/05/android-open-source-project-recommend2/)
+[界面之下：还原真实的MVVM模式(转载)](https://yanchao123456.github.io/weekly/2018/02/06/real-mvvm)
+
+[各种排序算法总结](http://stormzhang.com/opensource/2016/08/05/android-open-source-project-recommend2/)
 
 [来北京2个月的感受](http://stormzhang.com/github/2016/07/28/learn-github-from-zero7/)
 

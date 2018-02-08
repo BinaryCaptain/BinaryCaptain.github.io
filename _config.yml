@@ -57,11 +57,11 @@ postPatterns: 'ticTacToe'
 
 # SNS settings 配置社交网站url: email, weibo, zhihu, twitter, instagram, juejin, github, douban, facebook, dribble, uicn, jianshu, medium, linkedin
 sns:
-  email: 'mailto:ray.eldath@aol.com'
-  weibo: '//weibo.com/lovecolcol'
-  juejin: '//juejin.im/user/57a6f434165abd006159b4cc'
-  instagram: '//www.instagram.com/steveliaocn'
-  github: '//github.com/kaeyleo'
+  email: 'mailto:1098397458@qq.com'
+  weibo: '//weibo.com/LittleCaptain_y'
+  juejin: '//juejin.im/user/57f5218d816dfa00569b3414'
+  instagram: '//www.instagram.com/LittleCaptain_y'
+  github: '//github.com/BinaryCaptain'
 
 # Tags 设置标签
 recommend-tags: true # whether or not display recommend-tags on the sidebar

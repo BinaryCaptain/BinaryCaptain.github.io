@@ -3,7 +3,6 @@
 layout: default
 home-title: Simple and Optimistic
 description: 简单 && 乐观
-header-img:https://binarycaptain.github.io/assets/img/hero.jpg
 
 ---
 
@@ -12,9 +11,7 @@ header-img:https://binarycaptain.github.io/assets/img/hero.jpg
 <div class="g-banner home-banner {{ site.theme-color | prepend: 'banner-theme-' }}" data-theme="{{ site.theme-color }}">
     <h2>{{ page.home-title }}</h2>
     <h3>{{ page.description }}</h3>
-    {% if page.header-img %}
-    <img class="header-img" src="{{ page.header-img | prepend: site.baseurl }}" alt="">
-    {% endif %}
+    <img class="header-img" src="https://binarycaptain.github.io/assets/img/hero.jpg" alt="">
 </div>
 
 <main class="g-container home-content">

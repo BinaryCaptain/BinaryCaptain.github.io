@@ -5,7 +5,7 @@ keyword: '阎超, 阎超的独立博客, 阎超的博客, 前端, 前端开发, 
 url: 'https://binarycaptain.github.io/' # your host
 
 # if you don't need baseurl, you should leave this value blank.
-baseurl: 'https://binarycaptain.github.io/assets/img/hero.jpg'
+baseurl: ''
 
 # Navigation links
 nav:

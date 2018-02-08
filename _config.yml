@@ -39,8 +39,8 @@ livere_uid: MTAyMC8yODEwMC80Njcz
 reward:
   enable: true
   reward_comment: '真诚赞赏 手有余香'
-  wechatpay: 'assets/img/wechat.png'
-  alipay: 'assets/img/alipay.png'
+  wechatpay: 'https://binarycaptain.github.io/assets/img/wechat.png'
+  alipay: 'https://binarycaptain.github.io/assets/img/alipay.png'
 
 # b2t 回到顶部 by Ray-Eldath
 b2t: true

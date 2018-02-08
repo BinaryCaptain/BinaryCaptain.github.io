@@ -2,10 +2,10 @@
 title: '阎超的独立博客'
 description: '昵称小队长，前端开发者/伪极客/灵魂摄影师，热爱技术&设计。很高兴能在这里与你分享我对技术和生活的思考。'
 keyword: '阎超, 阎超的独立博客, 阎超的博客, 前端, 前端开发, 前端博客, javascript, vuejs, nodejs, 设计, react'
-url: 'https://yanchao123456.github.io/' # your host
+url: 'https://binarycaptain.github.io/' # your host
 
 # if you don't need baseurl, you should leave this value blank.
-baseurl: ''
+baseurl: 'https://binarycaptain.github.io/assets/img/hero.jpg'
 
 # Navigation links
 nav:

@@ -1,10 +1,10 @@
 ---
 layout: post
-title: 'H2O theme for Jekyll'
+title: 'YC theme for Jekyll'
 subtitle: '或许是最漂亮的Jekyll主题'
-date: 2017-04-18
+date: 2017-03-02
 categories: 技术
-cover: 'http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-postcover.jpg'
+cover: 'https://binarycaptain.github.io/assets/img/1.jpeg'
 tags: jekyll 前端开发 设计
 ---
 

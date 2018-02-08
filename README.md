@@ -1,4 +1,4 @@
-## jekyll-theme-H2O
+## jekyll-theme-YC
 
 基于Jekyll的博客主题模板，简洁轻量。
 
@@ -145,7 +145,7 @@ paginate_path: 'page:num'
 ```
 ---
 layout: post
-title: 'H2O theme for Jekyll'
+title: 'YC theme for Jekyll'
 subtitle: '或许是最漂亮的Jekyll主题'
 date: 2017-04-18
 categories: 技术
@@ -369,7 +369,7 @@ postPatterns: 'circuitBoard'
 
 在了解H2O主题的目录结构之前，确保你对[Jekyll目录结构](http://jekyll.com.cn/docs/structure/)有所了解。
 
-```		
+```
 	.
 	├── _config.yml # 配置文件
 	├── _includes # 页面组件方便重用
@@ -411,7 +411,7 @@ postPatterns: 'circuitBoard'
 
 [Disqus](https://disqus.com/)是一个第三方社交评论插件，体验相当不错。
 
-模板默认开启Disqus评论插件，如需关闭请在 `_config.yml` 中配置参数 `true` (开启) 或者 `false` (关闭) :  
+模板默认开启Disqus评论插件，如需关闭请在 `_config.yml` 中配置参数 `true` (开启) 或者 `false` (关闭) :
 
 在配置文件 `_config.yml` 中找到Disqus的相关配置，设置 `disqus` 参数为 `true` 打开评论功能，并且设置 `disqus_url`。
 

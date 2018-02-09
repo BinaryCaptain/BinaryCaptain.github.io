@@ -4,7 +4,7 @@ keywords: blog
 description: blog
 title: "北漂的路，走过才会懂"
 tags: [感悟]
-date: 2018-01-21
+date: 2018-10-21
 categories: 感悟
 cover: 'https://binarycaptain.github.io/assets/img/roller-skating.png'
 tags: 体会 感悟 北漂

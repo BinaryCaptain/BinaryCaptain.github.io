@@ -2,15 +2,9 @@
 
 基于Jekyll的博客主题模板，简洁轻量。
 
-另外，还有此主题的[Ghost版本](https://github.com/eastpiger/ghost-theme-H2O) by [eastpiger](https://github.com/eastpiger)
-
 ### Preview
 
-#### [在线预览 Live Demo →](http://liaokeyu.com/)
-
-![](screenshot/jekyll-theme-h2o-realhome.jpg)
-
-![](screenshot/jekyll-theme-h2o-realm.png)
+#### [在线预览 Live Demo →](https://binarycaptain.github.io/)
 
 如果你喜欢这个博客模板，请在右上角star一下，非常感谢～
 
@@ -58,11 +52,11 @@ Using your smartphone to scan the QR Code
 
 如果你已经安装了Jekyll，请检查版本是否为3.0.x，你可以使用 ```gem update jekyll``` 命令进行升级。
 
-> H2O主题基于Jekyll 3.2.1版本，不同版本之间可能存在部分差异，具体请参考[官方更新文档](https://jekyllrb.com/news/)
+> YC主题基于Jekyll 3.2.1版本，不同版本之间可能存在部分差异，具体请参考[官方更新文档](https://jekyllrb.com/news/)
 
 点击右上角Fork按钮在你的Github上创建分支，或者```clone```到本地。
 
-``` git clone https://github.com/kaeyleo/jekyll-theme-H2O.git ```
+``` git clone https://github.com/BinaryCaptain/BinaryCaptain.github.io.git ```
 
 最后，在命令行输入 ```jekyll server``` 开启服务，就能在本地预览主题了。
 
@@ -119,15 +113,16 @@ Using your smartphone to scan the QR Code
 
 You can easily get started by modifying _config.yml
 
+
 #### 站点信息
 
 你可以通用修改 `_config.yml` 文件来轻松的开始搭建自己的博客
 
 ```
 # Site settings
-title: '廖柯宇的独立博客' # 你的博客网站标题
+title: '阎超的独立博客' # 你的博客网站标题
 description: '很高兴能在这里与你分享我对技术和生活的思考。' # 站点描述
-keyword: '廖柯宇, 廖柯宇的独立博客, 前端, 设计' # 网站关键词
+keyword: '阎超, 阎超的独立博客, 前端, 设计' # 网站关键词
 url: 'http://liaokeyu.com' # 站点url
 baseurl: ''
 
@@ -149,7 +144,7 @@ title: 'YC theme for Jekyll'
 subtitle: '或许是最漂亮的Jekyll主题'
 date: 2017-04-18
 categories: 技术
-cover: 'http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-postcover.jpg'
+cover: 'http://on2171g4d.bkt.clouddn.com/jekyll-theme-YC-postcover.jpg'
 tags: jekyll 前端开发 设计
 ---
 ```
@@ -174,9 +169,6 @@ exclude: ['node_modules', 'dev', 'package.json', '自定义的文件夹名字']
 
 这样做是为了在Jekyll运行时排除某些文件被复制到运行文件`_site`里去。
 
-#### 侧边栏
-
-![](screenshot/jekyll-theme-h2o-sideBar.png)
 
 侧边栏分为两个部分：【个人简介】和【推荐标签】。当屏幕宽度小于960px时，侧边栏会被隐藏。
 
@@ -189,10 +181,11 @@ exclude: ['node_modules', 'dev', 'package.json', '自定义的文件夹名字']
 ```
 # SNS settings 配置社交网站url
 sns:
-  weibo: '//weibo.com/lovecolcol'
-  juejin: '//juejin.im/user/57a6f434165abd006159b4cc'
-  instagram: '//www.instagram.com/steveliaocn'
-  github: '//github.com/kaeyleo'
+  email: 'mailto:1098397458@qq.com'
+  weibo: '//weibo.com/LittleCaptain_y'
+  zhihu: '//www.zhihu.com/people/yan-chao-1314/activities'
+  github: '//github.com/BinaryCaptain'
+  jianshu: '//www.jianshu.com/users/a3a3f4edb72a/timeline'
 ```
 
 sns属性可选参数：
@@ -367,7 +360,7 @@ postPatterns: 'circuitBoard'
 
 如果你喜欢折腾，想对模板的代码进行修改，需要使用命令 `npm install` 安装 `package.json` 中的依赖，然后 `gulp` 一下即可开始你的自定义之旅。
 
-在了解H2O主题的目录结构之前，确保你对[Jekyll目录结构](http://jekyll.com.cn/docs/structure/)有所了解。
+在了解YC主题的目录结构之前，确保你对[Jekyll目录结构](http://jekyll.com.cn/docs/structure/)有所了解。
 
 ```
 	.
@@ -441,4 +434,4 @@ Any types of contribution are welcome. Thanks.
 
 ### License 许可证
 
-Jekyll-Theme-H2O is licensed under [MIT](https://github.com/kaeyleo/jekyll-theme-H2O/blob/master/LICENSE).
+Jekyll-Theme-YC is licensed under MIT.

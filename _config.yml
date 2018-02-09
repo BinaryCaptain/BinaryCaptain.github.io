@@ -59,10 +59,9 @@ postPatterns: 'ticTacToe'
 sns:
   email: 'mailto:1098397458@qq.com'
   weibo: '//weibo.com/LittleCaptain_y'
-  juejin: '//juejin.im/user/57f5218d816dfa00569b3414'
-  instagram: '//www.instagram.com/LittleCaptain_y'
+  zhihu: '//www.zhihu.com/people/yan-chao-1314/activities'
   github: '//github.com/BinaryCaptain'
-
+  jianshu: '//www.jianshu.com/users/a3a3f4edb72a/timeline'
 # Tags 设置标签
 recommend-tags: true # whether or not display recommend-tags on the sidebar
 recommend-condition-size: 12 # a tag will be recommended if the size of it is more than this value

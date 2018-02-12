@@ -42,11 +42,18 @@ Cache-Control描述的是一个相对时间，在进行缓存命中的时候，�
 
 各个消息中的指令含义如下：
 
-no-cache指示请求或响应消息不能缓存，该选项并不是说可以设置”不缓存“，而是需要和服务器确认。
-
+>no-cache指示请求或响应消息不能缓存，该选项并不是说可以设置”不缓存“，而是需要和服务器确认。
 max-age指示客户机可以接收生存期不大于指定时间（以秒为单位）的响应。上次缓存时间（客户端的）+max-age（64200s）<客户端当前时间
-
 min-fresh指示客户机可以接收响应时间小于当前时间加上指定时间的响应。
+更为详细的一些值可以是public、private、no-cache、no- store、no-transform、must-revalidate、proxy-revalidate、max-age
+各个消息中的指令含义如下：
+Public指示响应可被任何缓存区缓存。
+Private指示对于单个用户的整个或部分响应消息，不能被共享缓存处理。这允许服务器仅仅描述当用户的部分响应消息，此响应消息对于其他用户的请求无效。
+no-cache指示请求或响应消息不能缓存，该选项并不是说可以设置”不缓存“，容易望文生义~
+no-store用于防止重要的信息被无意的发布。在请求消息中发送将使得请求和响应消息都不使用缓存，完全不存下來。
+max-age指示客户机可以接收生存期不大于指定时间（以秒为单位）的响应。
+min-fresh指示客户机可以接收响应时间小于当前时间加上指定时间的响应。
+max-stale指示客户机可以接收超出超时期间的响应消息。如果指定max-stale消息的值，那么客户机可以接收超出超时期指定值之内的响应消息。
 
 ![图片描述](https://binarycaptain.github.io/assets/img/cache.png)
 
@@ -67,24 +74,14 @@ If-None-Match：当资源过期时（使用Cache-Control标识的max-age），�
 Expires < Cache:max-age
 Last-Modified < ETag
 
+## 用户行为与缓存
+
+浏览器缓存行为还有用户的行为有关，如果大家对 强制刷新（Ctrl + F5） 还有印象的话应该能立刻明白我的意思~
+
+![图片描述](https://binarycaptain.github.io/assets/img/cache-1.png)
+
 ## CDN
 
 >CDN的全称是Content Delivery Network，即内容分发网络。通过在网络各处放置节点服务器所构成的在现有的互联网基础之上的一层智能虚拟网络，CDN系统能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。其目的是使用户可就近取得所需内容，解决 Internet网络拥挤的状况，提高用户访问网站的响应速度。
 
-
- ```html
- <!DOCTYPE html>
- <html>
- <head>
-     <title></title>
- </head>
- <body>
-     <div>测试代码</div>
- </body>
- </html>
- ```
-
- ```css
-    p { color: red }
- ```
 CDN是一个经策略性部署的整体系统，包括分布式存储、负载均衡、网络请求的重定向和内容管理4个要件，而内容管理和全局的网络流量管理（Traffic Management）是CDN的核心所在。通过用户就近性和服务器负载的判断，CDN确保内容以一种极为高效的方式为用户的请求提供服务。

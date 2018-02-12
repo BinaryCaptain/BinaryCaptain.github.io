@@ -71,6 +71,33 @@ Last-Modified < ETag
 
 ```
 CDN的全称是Content Delivery Network，即内容分发网络。通过在网络各处放置节点服务器所构成的在现有的互联网基础之上的一层智能虚拟网络，CDN系统能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。其目的是使用户可就近取得所需内容，解决 Internet网络拥挤的状况，提高用户访问网站的响应速度。
+```
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    Person.prototype.constructor = Person; //函数对象的prototype属性的contructor属性指向这个函数对象
+    function Parent(){
+        this.surname = '张';
+        this.name = '张三';
+        this.like = ['apple','banana'];
+    }
+    var par = new Parent();
+    function Child(){
+        this.name = '张小三';
+    }
+    Parent.prototype.showSurname = function(){
+        return this.surname
+    }
+</script>
+</html>
 
 ```
+
 CDN是一个经策略性部署的整体系统，包括分布式存储、负载均衡、网络请求的重定向和内容管理4个要件，而内容管理和全局的网络流量管理（Traffic Management）是CDN的核心所在。通过用户就近性和服务器负载的判断，CDN确保内容以一种极为高效的方式为用户的请求提供服务。

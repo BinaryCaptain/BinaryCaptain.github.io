@@ -171,10 +171,15 @@ Content-Type: 只限于三个值：application/x-www-form-urlencoded、multipart
 对于简单请求，浏览器直接发出CORS请求。具体来说，就是在HTTP请求报文首部，增加一个Origin字段。如下：
 
 >GET /cors HTTP/1.1
+
 Origin: http://api.bob.com
+
 Host: api.alice.com
+
 Accept-Language: en-US
+
 Connection: keep-alive
+
 User-Agent: Mozilla/5.0...
 
 上面Origin字段的用来说明本次请求来自哪个源（协议+域名+端口）。服务器根据这个值，决定是否同意这次请求。
@@ -184,8 +189,11 @@ User-Agent: Mozilla/5.0...
 如果Origin指定的域名在许可范围内，服务器返回的响应，会多出几个头信息字段。
 
 >Access-Control-Allow-Origin: http://api.bob.com
+
 Access-Control-Allow-Credentials: true
+
 Access-Control-Expose-Headers: FooBar
+
 Content-Type: text/html; charset=utf-8
 
 上面的HTTP响应报文首部信息中，有三个与CORS请求相关的字段，都是以Access-Control-开头。
@@ -237,12 +245,19 @@ Content-Type: text/html; charset=utf-8
 于是，浏览器发现这是一个非简单的请求，就自动发出了一个“预检”请求，要求服务器确认可以这样请求。下面是这个“预检”请求的HTTP头信息。
 
 >OPTIONS /cors HTTP/1.1
+
 Origin: http://api.bob.com
+
 Access-Control-Request-Method: PUT
+
 Access-Control-Request-Headers: X-Custom-Header
+
 Host: api.alice.com
+
 Accept-Language: en-US
+
 Connection: keep-alive
+
 User-Agent: Mozilla/5.0...
 
 "预检"请求用的请求方法是OPTIONS，表示这个请求是用来询问的。头信息里面，关键字段是Origin，表示请求来自哪个源。
@@ -260,28 +275,43 @@ User-Agent: Mozilla/5.0...
 于是，服务器收到“预检”请求之后，检查了Origin、Access-Control-Request-Method和Access-Control-Request-Headers字段以后，确认允许跨域请求，就可以做出回应。
 
 >HTTP/1.1 200 OK
+
 Date: Mon, 01 Dec 2008 01:15:39 GMT
+
 Server: Apache/2.0.61 (Unix)
+
 Access-Control-Allow-Origin: http://api.bob.com
+
 Access-Control-Allow-Methods: GET, POST, PUT
+
 Access-Control-Allow-Headers: X-Custom-Header
+
 Content-Type: text/html; charset=utf-8
+
 Content-Encoding: gzip
+
 Content-Length: 0
+
 Keep-Alive: timeout=2, max=100
+
 Connection: Keep-Alive
+
 Content-Type: text/plain
 
 如果浏览器否定了"预检"请求，会返回一个正常的HTTP回应，但是没有任何CORS相关的头信息字段。这时，浏览器就会认定，服务器不同意预检请求，因此触发一个错误，被XMLHttpRequest对象的onerror回调函数捕获。控制台会打印出如下的报错信息。
 
 >XMLHttpRequest cannot load http://api.alice.com.
+
 Origin http://api.bob.com is not allowed by Access-Control-Allow-Origin.
 
 服务器回应的其他CORS相关字段如下：
 
 >Access-Control-Allow-Methods: GET, POST, PUT
+
 Access-Control-Allow-Headers: X-Custom-Header
+
 Access-Control-Allow-Credentials: true
+
 Access-Control-Max-Age: 1728000
 
 对比简单请求服务器响应的CORS字段，发现多了三个：
@@ -306,12 +336,19 @@ Access-Control-Max-Age: 1728000
 其实很简单，需要设置的就是上面所述的几个响应首部的字段，主要考虑两种类型的请求和是否需要使用Cookie。具体设置如下：
 
 >app.all(" * ", function(req, res, next) {
+
     res.header("Access-Control-Allow-Origin", /* url | * | null */);
+
     res.header("Access-Control-Allow-Headers", "Authorization, X-Requested-With");
+
     res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS"); /* 服务器支持的所有字段 */
+
     res.header("Access-Control-Allow-Credentials", "true"); /* 当使用Cookie时 */
+
     res.header("Access-Control-Max-Age", 300000); /* 设置预检请求的有效期 */
+    
     if (req.method === "OPTIONS") return res.send(200); /*让options请求快速返回*/
+
     else next();
 });
 

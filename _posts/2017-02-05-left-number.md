@@ -2,146 +2,93 @@
 layout: post
 keywords: blog
 description: blog
-title: "react与新浪微博尤物志技术实践"
-tags: [react]
-date: 2017-02-03
-categories: react
-cover: 'https://binarycaptain.github.io/assets/img/react.jpg'
-tags: react
-subtitle: 'react技术实践'
+title: "剩余参数和扩展运算符"
+tags: [ES6]
+date: 2017-02-05
+categories: ES6
+cover: 'https://binarycaptain.github.io/assets/img/ES6.png'
+tags: ES6
+subtitle: '不容忽视的...'
 
 ---
 
 
-## react介绍
+## 剩余参数
+说剩余参数之前，我们首先说一下arguments，arguments对象是所有（非箭头）函数中都可用的局部变量。你可以使用arguments对象在函数中引用函数的参数。此对象包含传递给函数的每个参数的条目，第一个条目的索引从0开始。例如，如果一个函数传递了三个参数，你可以以如下方式引用他们：
 
-React 项目是Facebook的内部项目，因为该公司对市场上所有JavaScript框架，都不满意，就决定自己写一套，用来架设
-Instagram 的网站。做出来以后，发现这套东西很好用，就在2013年5月开源了。
+>1. arguments[0]
+2. arguments[1]
+3. arguments[2]
 
-由于 React的设计思想极其独特，属于革命性创新，性能出众，代码逻辑却非常简单。所以，越来越多的人开始关注和使用，认为它可能是将来 Web 开发的主流工具。
+arguments对象不是一个Array它类似于Array，但除了length属性和索引元素之外没有任何Array属性。例如，它没有 pop 方法。
 
-这个项目本身也越滚越大，从最早的UI引擎变成了一整套前后端通吃的 Web App 解决方案。衍生的 React Native 项目，目标更是宏伟，希望用写WebApp的方式去写NativeApp。如果能够实现，整个互联网行业都会被颠覆，因为同一组人只需要写一次 UI ，就能同时运行在服务器、浏览器和手机。React主要用于构建UI。
-
-你可以在React里传递多种类型的参数，如声明代码，帮助你渲染出UI、也可以是静态的HTML DOM元素、也可以传递动态变量、甚至是可交互的应用组件。
-
-特点：
-
-1. 声明式设计：React采用声明范式，可以轻松描述应用。
-2. 高效：React通过对DOM的模拟，最大限度地减少与DOM的交互。
-3. 灵活：React可以与已知的库或框架很好地配合。
-
-## react 尤物志技术实践
-
-尤物志是微博旗下的电商版块，第一版的尤物志开发工作我并没有亲自参与，主要参与第二次的改版工作以及重构工作。下面介绍一下尤物志的技术栈。用到的主要技术有NodeJS+React+Webpack+ES6+Babel+SASS，其中核心是react技术，首先从react组件说起，任何一个复杂的应用，都是由一个简单的应用发展而来的，当应用还很简单的时候，因为功能少，可能只需要一个组件就够了，但是，随着功能的增加，把越来越多的功能放在一个组件中就会显得臃肿和难以管理。就和一个人专注做一件事情一样，也应该尽量保持一组件只做一件事情，当开发者发现一个组件功能太多，代码量太大的时候，就要考虑拆分这个组件，
-用多个小的组件来代替，每个小的组件只关注实现单个功能，但是这些功能组合起来，也能够满足复杂的实际业务需求。这就是“分而治之”的策略，把问题你分解为多个小的问题，这样既绕你故意解决也方便维护。虽然这是一个好策略，但是也不能滥用，只有必要的时候采取拆分组件，不然可能得不偿失。
-
-根据软件设计的通则，组件的划分为应当为高内聚，低耦合的原则。
-
-高内聚指的是把逻辑紧密相关的内容放在一个组件当中，用户界面无外乎内容，交互行为和样式。传统上，内容上由HTML表示，交互行为放在JavaScript代码文件中，样式放在css文件当中进行定义。虽然是一个功能，但是却要放在三个文件当中，不符合高内聚的原则。react却不是这样，在react当中，这些东西都可以放在一个文件当中，因此，react天生具有高内聚的特点。
-
-具体到尤物志项目当中，是根据不同的功能来划分组件的，对于仅仅是样式或者内容上有区别的功能模块，尽量复用前面已经开发好的组件，而不是再去重新去开发，做到一个模块不管放到什么地方都可以正常使用，对于后期维护都具有重要的意义。
-
-## react 声明周期介绍
-
-实例化
-首次实例化
-
-getDefaultProps
-getInitialState
-componentWillMount
-render
-componentDidMount
-
-实例化完成后的更新
-
-getInitialState
-componentWillMount
-render
-componentDidMount
-
-存在期
-组件已存在时的状态改变
-
-componentWillReceiveProps
-shouldComponentUpdate
-componentWillUpdate
-render
-componentDidUpdate
-销毁&清理期
-componentWillUnmount
-说明
-生命周期共提供了10个不同的API。
-
-现在我们通常用ES6的方法创建组件，这个时候并不会发生1和2这2个过程。
-
-1.getDefaultProps
-作用于组件类，只调用一次，返回对象用于设置默认的props，对于引用值，会在实例中共享。
-
-2.getInitialState
-作用于组件的实例，在实例创建时调用一次，用于初始化每个实例的state，此时可以访问this.props。
-
-3.componentWillMount
-在完成首次渲染之前调用，此时仍可以修改组件的state。它既可以在浏览器端被调用，也可以在服务器端被调用。
-
-4.render
-必选的方法，创建虚拟DOM，该方法具有特殊的规则：
-
-只能通过this.props和this.state访问数据
-可以返回null、false或任何React组件
-只能出现一个顶级组件（不能返回数组）
-不能改变组件的状态
-不能修改DOM的输出
-
-5.componentDidMount
-真实的DOM被渲染出来后调用，在该方法中可通过this.getDOMNode()访问到真实的DOM元素。此时已可以使用其他类库来操作这个DOM。
-
-***在服务端中，该方法不会被调用***这是它和componentWillMount的区别。
-
-6.componentWillReceiveProps
-很多说法是组件接收到新的props时调用，其实这是不正确的，实际上是只要父组件的render函数被调用，在render函数里面被渲染的子组件就会经历更新过程，不管父组件传给子组件的props是否发生改变，都会触发此函数，下面是接收到新的props的时候，并将其作为参数nextProps使用，此时可以更改组件props及state。
-
+通常我们遍历参数求和的时候，做法如下：
 ```javascript
-  componentWillReceiveProps: function(nextProps) {
-        if (nextProps.bool) {
-            this.setState({
-                bool: true
-            });
-        }
+    function add(x,y,z){
+        return x+y+z;
     }
 ```
-7.shouldComponentUpdate
-组件是否应当渲染新的props或state，返回false表示跳过后续的生命周期方法，通常不需要使用以避免出现bug。在出现应用的瓶颈时，可通过该方法进行适当的优化。
+但是当我们的参数变成4个的时候，就无法使用这个函数了，传统的解决方法是利用arguments这个关键字来解决，代码如下：
+```javascript
+    function add(){
+        var sum = 0,
+            len = arguments.length;
+            for(var i = 0; i<len; i++){
+                sum += arguments[i];
+            }
+            return sum;
+    }
+add();
+add(1,2,3);
+add(1,2,3,4);
+```
+这样我们不管几个参数都可以得到正确的结果。当然ES6为我们提供了更方便的解决方案，那就是剩余参数。那么剩余参数的原型是数组(Array)而不是和arguments一样的类数组对象。有了剩余参数我们可以这样。代码如下：
+```javascript
+    function add(...numbers){
+        return numbers.reduce((prev,curr) => prev+curr),0)
+    }
+```
+### reduce方法介绍
+>数组方法 reduce 用来迭代一个数组，并且把它累积到一个值中。
+使用 reduce 方法时，你要传入一个回调函数，这个回调函数的参数是一个 累加器 （比如例子中的 prev) 和当前值 (curr）。reduce 方法有一个可选的第二参数，它可以被用来设置累加器的初始值。如果没有在这定义初始值，那么初始值将变成数组中的第一项，而 currentVal 将从数组的第二项开始。
+通常我们使用 reduce 方法来让 array 中的所有值相加
 
-在首次渲染期间或者调用了forceUpdate方法后，该方法不会被调用
+这里我们就看到了剩余参数的强大功能。再举一个例子，代码如下：
+```javascript
+    function converCurrency(rate,...amounts){
+        return amounts.map(amounts => amounts * rate);
+    }
 
-8.componentWillUpdate
-接收到新的props或者state后，进行渲染之前调用，此时不允许更新props或state。
+    const amounts = converCurrency(0.89,12,13,44,32,55);
+    console.log(amounts);
+```
 
-9.componentDidUpdate
-完成渲染新的props或者state后调用，此时可以访问到新的DOM元素。
+## 扩展运算符
+扩展运算符（spread）是三个点（...）。它好比rest参数的逆运算，将一个数组转为用逗号分隔的参数序列。那么它具体的应用场景有哪些呢，之前我们想合并2个数组，只能这样，代码如下：
+```javascript
+    const youngers = ["xiaoming","xiaohong","box"];
+    const olders = ["ajd","fdjksaf","fdkajf"];
+    const members = youngers.concat(olders);
+    console.log(members);
+```
 
-10.componentWillUnmount
-组件被移除之前被调用，可以用于做一些清理工作，在componentDidMount方法中添加的所有任务都需要在该方法中撤销，比如创建的定时器或添加的事件监听器。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```javascript
+    const youngers = ["xiaoming","xiaohong","box"];
+    const olders = ["ajd","fdjksaf","fdkajf"];
+    const members = [];
+    members = members.concat(youngers);
+    members.push("mary");
+    members = members.concat(olders);
+    console.log(members);
+```
+这种方法看起来十分臃肿，我们可以使用扩展运算符来解决这个问题。
+```javascript
+    const youngers = ["xiaoming","xiaohong","box"];
+    const olders = ["ajd","fdjksaf","fdkajf"];
+    const members = [...youngers,'mary', ...olders];
+    console.log(members);
+```
+之后我们在对扩展运算符的更多用法进行扩展。
 
 
 

@@ -2,142 +2,208 @@
 layout: post
 keywords: blog
 description: blog
-title: "react与新浪微博尤物志技术实践"
-tags: [react]
-date: 2017-02-03
-categories: react
-cover: 'https://binarycaptain.github.io/assets/img/react.jpg'
-tags: react
-subtitle: 'react技术实践'
+title: "扒一下W3C规范里的BFC和IFC"
+tags: [BFC IFC]
+date: 2017-02-07
+categories: BFC IFC
+cover: 'https://binarycaptain.github.io/assets/img/bfc-1.png'
+tags: BFC IFC
+subtitle: 'BFC IFC'
 
 ---
 
+先说说FC，FC的含义就是Fomatting Context。它是CSS2.1规范中的一个概念。它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。BFC和IFC都是常见的FC。分别叫做Block Fomatting Context 和Inline Formatting Context。
 
-## react介绍
+## BFC
+BFC（Block Formatting Context）叫做“块级格式化上下文”。BFC的布局规则如下：
 
-React 项目是Facebook的内部项目，因为该公司对市场上所有JavaScript框架，都不满意，就决定自己写一套，用来架设
-Instagram 的网站。做出来以后，发现这套东西很好用，就在2013年5月开源了。
+1. 内部的盒子会在垂直方向，一个个地放置；
+2. 盒子垂直方向的距离由margin决定，属于同一个BFC的两个相邻Box的上下margin会发生重叠(按照数值较大的margin来)；
+3. 每个元素的左边，与包含的盒子的左边相接触，即使存在浮动也是如此(右边同理)；
+4. BFC的区域不会与float重叠；
+5. BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素，反之也如此；
+6. 计算BFC的高度时，浮动元素也参与计算。
 
-由于 React的设计思想极其独特，属于革命性创新，性能出众，代码逻辑却非常简单。所以，越来越多的人开始关注和使用，认为它可能是将来 Web 开发的主流工具。
 
-这个项目本身也越滚越大，从最早的UI引擎变成了一整套前后端通吃的 Web App 解决方案。衍生的 React Native 项目，目标更是宏伟，希望用写WebApp的方式去写NativeApp。如果能够实现，整个互联网行业都会被颠覆，因为同一组人只需要写一次 UI ，就能同时运行在服务器、浏览器和手机。React主要用于构建UI。
+介绍过了BFC的布局规范，再来说说哪些元素会产生BFC。
+1. 根元素；
+2. float的属性不为none；
+3. position为absolute或fixed；
+4. display为inline-block，table-cell，table-caption，flex；
+5. overflow不为visible
 
-你可以在React里传递多种类型的参数，如声明代码，帮助你渲染出UI、也可以是静态的HTML DOM元素、也可以传递动态变量、甚至是可交互的应用组件。
+那么，我们一般如何触发BFC呢？需要触发（需要写一行声明，来告诉外界声明独立）建议使用overflow：hidden来声明，在包住的div里触发，要触发哪一个就在哪一个地方写上overfolw:hidden
 
-特点：
+## 三、BFC的作用及原理
 
-1. 声明式设计：React采用声明范式，可以轻松描述应用。
-2. 高效：React通过对DOM的模拟，最大限度地减少与DOM的交互。
-3. 灵活：React可以与已知的库或框架很好地配合。
+1. 自适应两栏布局
 
-## react 尤物志技术实践
-
-尤物志是微博旗下的电商版块，第一版的尤物志开发工作我并没有亲自参与，主要参与第二次的改版工作以及重构工作。下面介绍一下尤物志的技术栈。用到的主要技术有NodeJS+React+Webpack+ES6+Babel+SASS，其中核心是react技术，首先从react组件说起，任何一个复杂的应用，都是由一个简单的应用发展而来的，当应用还很简单的时候，因为功能少，可能只需要一个组件就够了，但是，随着功能的增加，把越来越多的功能放在一个组件中就会显得臃肿和难以管理。就和一个人专注做一件事情一样，也应该尽量保持一组件只做一件事情，当开发者发现一个组件功能太多，代码量太大的时候，就要考虑拆分这个组件，
-用多个小的组件来代替，每个小的组件只关注实现单个功能，但是这些功能组合起来，也能够满足复杂的实际业务需求。这就是“分而治之”的策略，把问题你分解为多个小的问题，这样既绕你故意解决也方便维护。虽然这是一个好策略，但是也不能滥用，只有必要的时候采取拆分组件，不然可能得不偿失。
-
-根据软件设计的通则，组件的划分为应当为高内聚，低耦合的原则。
-
-高内聚指的是把逻辑紧密相关的内容放在一个组件当中，用户界面无外乎内容，交互行为和样式。传统上，内容上由HTML表示，交互行为放在JavaScript代码文件中，样式放在css文件当中进行定义。虽然是一个功能，但是却要放在三个文件当中，不符合高内聚的原则。react却不是这样，在react当中，这些东西都可以放在一个文件当中，因此，react天生具有高内聚的特点。
-
-具体到尤物志项目当中，是根据不同的功能来划分组件的，对于仅仅是样式或者内容上有区别的功能模块，尽量复用前面已经开发好的组件，而不是再去重新去开发，做到一个模块不管放到什么地方都可以正常使用，对于后期维护都具有重要的意义。
-
-## react 声明周期介绍
-
-实例化
-首次实例化
-
-getDefaultProps
-getInitialState
-componentWillMount
-render
-componentDidMount
-
-实例化完成后的更新
-
-getInitialState
-componentWillMount
-render
-componentDidMount
-
-存在期
-组件已存在时的状态改变
-
-componentWillReceiveProps
-shouldComponentUpdate
-componentWillUpdate
-render
-componentDidUpdate
-销毁&清理期
-componentWillUnmount
-说明
-生命周期共提供了10个不同的API。
-
-现在我们通常用ES6的方法创建组件，这个时候并不会发生1和2这2个过程。
-
-1.getDefaultProps
-作用于组件类，只调用一次，返回对象用于设置默认的props，对于引用值，会在实例中共享。
-
-2.getInitialState
-作用于组件的实例，在实例创建时调用一次，用于初始化每个实例的state，此时可以访问this.props。
-
-3.componentWillMount
-在完成首次渲染之前调用，此时仍可以修改组件的state。它既可以在浏览器端被调用，也可以在服务器端被调用。
-
-4.render
-必选的方法，创建虚拟DOM，该方法具有特殊的规则：
-
-只能通过this.props和this.state访问数据
-可以返回null、false或任何React组件
-只能出现一个顶级组件（不能返回数组）
-不能改变组件的状态
-不能修改DOM的输出
-
-5.componentDidMount
-真实的DOM被渲染出来后调用，在该方法中可通过this.getDOMNode()访问到真实的DOM元素。此时已可以使用其他类库来操作这个DOM。
-
-***在服务端中，该方法不会被调用***这是它和componentWillMount的区别。
-
-6.componentWillReceiveProps
-很多说法是组件接收到新的props时调用，其实这是不正确的，实际上是只要父组件的render函数被调用，在render函数里面被渲染的子组件就会经历更新过程，不管父组件传给子组件的props是否发生改变，都会触发此函数，下面是接收到新的props的时候，并将其作为参数nextProps使用，此时可以更改组件props及state。
-
-```javascript
-  componentWillReceiveProps: function(nextProps) {
-        if (nextProps.bool) {
-            this.setState({
-                bool: true
-            });
-        }
+```html
+<style>
+    body {
+        width: 300px;
+        position: relative;
     }
+
+    .aside {
+        width: 100px;
+        height: 150px;
+        float: left;
+        background: #f66;
+    }
+
+    .main {
+        height: 200px;
+        background: #fcc;
+    }
+</style>
+<body>
+    <div class="aside"></div>
+    <div class="main"></div>
+</body>
 ```
-7.shouldComponentUpdate
-组件是否应当渲染新的props或state，返回false表示跳过后续的生命周期方法，通常不需要使用以避免出现bug。在出现应用的瓶颈时，可通过该方法进行适当的优化。
+![](https://binarycaptain.github.io/assets/img/bfc-1.png)
 
-在首次渲染期间或者调用了forceUpdate方法后，该方法不会被调用
+根据BFC布局规则第3条：
 
-8.componentWillUpdate
-接收到新的props或者state后，进行渲染之前调用，此时不允许更新props或state。
+>每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。
 
-9.componentDidUpdate
-完成渲染新的props或者state后调用，此时可以访问到新的DOM元素。
+因此，虽然存在浮动的元素aslide，但main的左边依然会与包含块的左边相接触。
 
-10.componentWillUnmount
-组件被移除之前被调用，可以用于做一些清理工作，在componentDidMount方法中添加的所有任务都需要在该方法中撤销，比如创建的定时器或添加的事件监听器。
+根据BFC布局规则第四条：
 
+>BFC的区域不会与float box重叠。
 
+我们可以通过通过触发main生成BFC， 来实现自适应两栏布局。
 
+```css
+.main {
+    overflow: hidden;
+}
+```
 
+　当触发main生成BFC后，这个新的BFC不会与浮动的aside重叠。因此会根据包含块的宽度，和aside的宽度，自动变窄。效果如下：
 
+![](https://binarycaptain.github.io/assets/img/bfc-2.png)
 
+2. 清除内部浮动
+```html
+<style>
+    .par {
+        border: 5px solid #fcc;
+        width: 300px;
+    }
 
+    .child {
+        border: 5px solid #f66;
+        width:100px;
+        height: 100px;
+        float: left;
+    }
+</style>
+<body>
+    <div class="par">
+        <div class="child"></div>
+        <div class="child"></div>
+    </div>
+</body>
+```
+根据BFC布局规则第六条：
 
+>计算BFC的高度时，浮动元素也参与计算
 
+为达到清除内部浮动，我们可以触发par生成BFC，那么par在计算高度时，par内部的浮动元素child也会参与计算。
 
+代码：
 
+```css
+.par {
+    overflow: hidden;
+}
+```
+效果如下：
 
+![](https://binarycaptain.github.io/assets/img/bfc-3.png)
 
+3. 防止垂直 margin 重叠
 
+代码:
+```css
+<style>
+    p {
+        color: #f55;
+        background: #fcc;
+        width: 200px;
+        line-height: 100px;
+        text-align:center;
+        margin: 100px;
+    }
+</style>
+<body>
+    <p>Haha</p>
+    <p>Hehe</p>
+</body>
+```
+页面：
 
+![](https://binarycaptain.github.io/assets/img/bfc-4.png)
 
+两个p之间的距离为100px，发送了margin重叠。(因为这里的根元素是body，所以形成了BFC，因此其内部的元素的margin会发生重叠)
+
+根据BFC布局规则第二条：
+
+>Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠
+
+我们可以在p外面包裹一层容器，并触发该容器生成一个BFC。那么两个P便不属于同一个BFC，就不会发生margin重叠了。
+
+代码：
+```html
+<style>
+    .wrap {
+        overflow: hidden;
+    }
+    p {
+        color: #f55;
+        background: #fcc;
+        width: 200px;
+        line-height: 100px;
+        text-align:center;
+        margin: 100px;
+    }
+</style>
+<body>
+    <p>Haha</p>
+    <div class="wrap">
+        <p>Hehe</p>
+    </div>
+</body>
+```
+效果如下:
+![](https://binarycaptain.github.io/assets/img/bfc-5.png)
+
+## 总结
+其实以上的几个例子都体现了BFC布局规则第五条：
+
+>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。
+
+因为BFC内部的元素和外部的元素绝对不会互相影响，因此， 当BFC外部存在浮动时，它不应该影响BFC内部Box的布局，BFC会通过变窄，而不与浮动有重叠。同样的，当BFC内部有浮动时，为了不影响外部元素的布局，BFC计算高度时会包括浮动的高度。避免margin重叠也是这样的一个道理。
+
+## IFC
+IFC(inline formatting context),即⾏内格式化上下⽂，与之对应的是BFC(block formating context),块格式化上下⽂，它和BFC⼀样，既不是属性也不是元素，⽽是⼀种环境，⼀种上下⽂。
+
+在IFC中，框（boxes）⼀个接⼀个地⽔平排列，起点是包含块的顶部。⽔平⽅向上的margin，border和padding在框之间得到保留。框在垂直⽅向上可以以不同的⽅式对⻬：它们的顶部或底部对⻬，或根据其中⽂字的基线对⻬。包含那些框的⻓⽅形区域，会形成⼀⾏，叫做⾏框(line box)。
+
+一个line box的宽度，由他的包含块(containg block)和floats的存在情况决定。linebox的高度，由你给出的代码决定。
+
+行高的高度足以包含它的内部容器，也可能比它包含的容器们都高（比如在基线对齐的时候），当它包含的内部容器的高度小于行框的高度时，内部容器的垂直位置由vertical属性来确定，这个性质可以用来实现垂直居中。
+
+当几个行内框在水平方向无法放入一个行内框时，它们可以分配在两个或多个垂直堆叠的行框中。因此，一个段落就是行框在垂直方向上的堆叠。行框在堆叠时没有垂直方向上的分割且永不重叠。
+
+一个行内框超出包含它的行框的宽度，它将会被分割为几个框。如果一个行框不能被分割，行内框会益处行框。
+
+如果一个行内框被分割，margin、padding、border在所有分割处没有视觉效果。
+
+创建一个IFC的环境，让行框的高度是包含块的高度的100%,让行框内部的元素使用Vertical-align：middle,就可以实现垂直居中。
 
 
 

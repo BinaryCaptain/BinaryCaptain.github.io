@@ -4,7 +4,7 @@ keywords: blog
 description: blog
 title: "剑指offer - two day"
 tags: [剑指offer]
-date: 2017-01-12
+date: 2017-01-13
 categories: 算法
 cover: 'https://binarycaptain.github.io/assets/img/suanfa.jpg'
 tags: 算法

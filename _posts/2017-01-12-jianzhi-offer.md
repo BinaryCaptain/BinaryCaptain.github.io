@@ -2,8 +2,8 @@
 layout: post
 keywords: blog
 description: blog
-title: "剑指offer"
-tags: [one day]
+title: "剑指offer - one day"
+tags: [剑指offer]
 date: 2017-01-12
 categories: 算法
 cover: 'https://binarycaptain.github.io/assets/img/suanfa.jpg'

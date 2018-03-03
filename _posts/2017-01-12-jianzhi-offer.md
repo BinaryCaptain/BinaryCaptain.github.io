@@ -6,7 +6,7 @@ title: "剑指offer"
 tags: [one day]
 date: 2017-01-12
 categories: 算法
-cover: 'https://binarycaptain.github.io/assets/img/suanfa.jpeg'
+cover: 'https://binarycaptain.github.io/assets/img/suanfa.jpg'
 tags: 算法
 subtitle: '算法'
 

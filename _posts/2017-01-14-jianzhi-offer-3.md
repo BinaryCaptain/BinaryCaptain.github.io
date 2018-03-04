@@ -30,7 +30,7 @@ subtitle: '算法'
 public String replaceSpace(StringBuffer str) {
     int n = str.length();
     for (int i = 0; i < n; i++) {
-        if (str.charAt(i) == ' ') str.append("  "); // 尾部填充两个
+       if (str.charAt(i) == ' ') str.append("  ") // 尾部填充两个
     }
 
     int idxOfOriginal = n - 1;

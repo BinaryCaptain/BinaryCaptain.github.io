@@ -2,13 +2,13 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>云备忘录</title>
+    <title>todolist</title>
     <link rel="stylesheet" href="./style/index.css" />
 </head>
     <body>
         <section class="todoapp">
             <header class="header">
-                <h1>云备忘录</h1>
+                <h1>todolist</h1>
                 <input class="new-todo" placeholder="接下来要做什么?" v-model="newTodo"
                 @keyup.enter="addTodo"
                 />
@@ -41,16 +41,16 @@
                     <li>
                         <a href="#/" :class="{ selected: visibility === 'all' }"
                             @click="visibility='all'">全部
-                        </a> 
+                        </a>
                     </li>
-                    <li> 
+                    <li>
                         <a href="#/active" :class="{ selected: visibility === 'active' }"
-                            @click="visibility='active'">未完成</a> 
+                            @click="visibility='active'">未完成</a>
                     </li>
-                    <li> 
+                    <li>
                         <a href="#/completed" :class="{ selected: visibility === 'completed' }"
                             @click="visibility='completed'">已完成
-                        </a> 
+                        </a>
                     </li>
                 </ul>
                 <button class="clear-completed" @click="removeCompleted" v-show="completedCount">清空已完成

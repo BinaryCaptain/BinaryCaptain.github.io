@@ -21,24 +21,40 @@ subtitle: '算法'
 
 
 ```java
-public String replaceSpace(StringBuffer str) {
-	int n = str.length();
-	for (int i = 0; i < n; i++){
-		if (str.charAt(i) == " ") str.append("  ");
+
+public ArrayList<Integer> printListFromTainToHead(ListNode listNode) {
+	ArrayList<Integer> ret = new ArrayList<>();
+	if (listNode != null) {
+		ret.add(listNode.val);
+		listNode = listNode.next;
 	}
-	
-	int idxOfOriginal = n - 1;
-	int idxOfNew = str.length();
-	while( idxOfOriginal >= 0 && idxOfNew > idxOfOriginal) {
-		if (str.charAt(i) == ""){
-			str.setCharAt(idxOfNew--,"0");
-			str.setCharAt(idxOfNew--,"2");
-			str.setCharAt(idxOfNew--,"%");
-		} else {
-			str.setCharAt(idxOfNew--, str.CharAt(idxOfOriginal));
-		}
-		ideOfOriginal--;
-	}
-	return str.toString();
+	Collections.reverse(ret);
+	return ret;
 }
+
+使用 Stack
+public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+	Stack<Integer> stack = new Stack<>();
+	if (listNode != null) {
+		stack.add(listNode.val);
+		listNode = listNode.next;
+	}
+	ArrayList<Integer> ret = new ArrayList<>();
+	while (!stack.isEmpty()) {
+		ret.add(stack.pop());
+	}
+	return ret;
+}
+
+使用递归
+public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+	ArrayList<Integer> ret = new ArrayList<>();
+	if (listNode != null) {
+		ret.addAll(printListFromTailToHead(listNode.next));
+		ret.add(listNode.val);
+	}
+	return ret;
+}
+
+不使用库函数，并且不使用递归的迭代实现，利用链表的头插法为逆序的特性。
 ```

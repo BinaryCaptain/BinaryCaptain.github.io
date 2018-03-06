@@ -33,7 +33,7 @@ public String replaceSpace(StringBuffer str) {
        if (str.charAt(i) == ' ') str.append("  ") // 尾部填充两个
     }
 
-    int idxOfOriginal = n - 1;
+    int idxOfOriginal = n - 1;  //长度为n，索引为0 - n-1
     int idxOfNew = str.length() - 1;
     while (idxOfOriginal >= 0 && idxOfNew > idxOfOriginal) {
         if (str.charAt(idxOfOriginal) == ' ') {

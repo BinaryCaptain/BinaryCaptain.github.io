@@ -27,8 +27,7 @@
                             <label @dblclick="editTodo(todo)" v-cloak>{{ todo.title }}</label>
                             <button class="destroy" @click="removeTodo(todo)"></button>
                         </div>
-                    <input class="edit" v-model="todo.title" v-focus="todo === editedTodo"
-                        @keyup.enter="doneEdit(todo)"
+                    <input class="edit" v-model="todo.title" v-focus="todo === editedTodo"  @keyup.enter="doneEdit(todo)"
                         @keyup.esc="cancelEdit(todo)"
                         @blur="cancelEdit(todo)"
                     />

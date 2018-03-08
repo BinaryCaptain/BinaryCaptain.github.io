@@ -4,7 +4,7 @@ keywords: blog
 description: blog
 title: "react与新浪微博尤物志技术实践"
 tags: [react]
-date: 2017-02-03
+date: 2018-02-03
 categories: react
 cover: 'https://binarycaptain.github.io/assets/img/react.jpg'
 tags: react

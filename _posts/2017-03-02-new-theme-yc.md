@@ -6,6 +6,7 @@ date: 2017-03-02
 categories: 技术
 cover: 'https://binarycaptain.github.io/assets/img/1.jpeg'
 tags: jekyll 前端开发 设计
+
 ---
 
 找了很长时间，一直没有合适的模板，所以开始计划自己写一套好看又好用的主题模板。设计之初就明确了极简主义，风格采用扁平化了，通过卡片式设计来进行区块分明的布局，参考了Medium的ui样式和知乎专栏的视觉风格。

@@ -1,7 +1,7 @@
 ---
 layout: post
-keywords: blog
-description: blog
+keywords: http
+description: http
 title: "http request"
 tags: [http]
 date: 2017-03-01

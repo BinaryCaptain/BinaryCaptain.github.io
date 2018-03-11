@@ -1,7 +1,7 @@
 ---
 layout: post
-keywords: blog
-description: blog
+keywords: 算法
+description: 算法
 title: "剑指offer - one day"
 tags: [剑指offer]
 date: 2017-01-12

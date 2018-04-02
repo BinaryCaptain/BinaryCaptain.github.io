@@ -4,7 +4,7 @@ keywords: interview
 description: interview
 title: "有赞面试题"
 tags: [interview]
-date: 2018-03-05
+date: 2018-03-18
 categories: interview
 cover: 'https://binarycaptain.github.io/assets/img/youzan.jpg'
 tags: interview
@@ -112,5 +112,63 @@ unsubscribe();
 当我们调用取消注册函数的时候，我们删除的功能依赖于对订阅函数集合的筛选方法（Array filter）。
 
 和内存泄露说再见！
+
+## 实际案列
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <input type="text">
+    <h1></h1>
+    <button>Change name</button>
+</body>
+</html>
+```
+```javascript
+    class EventEmitter {
+        constructor() {
+            this.events = {};
+        }
+
+    subscribe(eventName,fn) {
+            if (!events[eventName]) {
+                this.events[eventName] = [];
+            }
+
+            this.events[eventName].push(fn);
+
+            return this.events[eventName] = this.events[eventName].filter(eventFn => fn !== eventFn);
+        }
+
+    }
+
+    emit(eventName,data) {
+        const event = this.events[eventName];
+        event.forEach(fn => {
+            fn.call(null,data);
+        })
+    }
+
+    document.addEventListener("DOMContentLoaded",function(event) {
+
+        })
+
+
+```
+
+
+
+
+
+
+
+
+
 
 

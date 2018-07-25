@@ -4,7 +4,7 @@ keywords: npm bower
 description: npm和bower的区别比较
 title: "npm bower"
 tags: [npm]
-date: 2018-03-18
+date: 2018-07-17
 categories: npm
 cover: 'https://binarycaptain.github.io/assets/img/npm.jpg'
 tags: npm

@@ -55,7 +55,7 @@ subtitle: 'js倒计时'
 
 先看一段测试代码：
 
-```
+```javascript
 var start = new Date().getTime();
 var count = 0;
 
@@ -76,7 +76,7 @@ setInterval(function() {
 
 下面加一段阻塞代码看看：
 
-```
+```javascript
 var start = new Date().getTime(); 
 var count = 0; 
  
@@ -124,7 +124,7 @@ setInterval(function(){
 
 关键实现代码如下：
 
-```
+```javascript
 //继续线程占用
 setInterval(function(){ 
      var j = 0; 

@@ -132,7 +132,7 @@ setInterval(function(){
 }, 0); 
  
 //倒计时
-var  interval = 1000,
+var    interval = 1000,
        ms = 50000,  //从服务器和活动开始时间计算出的时间差，这里测试用50000ms
        count = 0,
        startTime = new Date().getTime();
@@ -158,7 +158,7 @@ function countDownStart(){
 ```
 ![](https://binarycaptain.github.io/assets/img/countdown-5.png)
 
->结论：由于线程阻塞延迟问题，做了setTimeout执行时间的误差修正，保证setTimeout执行时间一致。若冻结时间特别长的，还要做特殊处理。
+>结论：由于线程阻塞延迟问题，做了setTimeout执行时间的误差修正，,保证setTimeout执行时间一致，同时也保证了在除去误差之后的时间立刻执行，保证精确度。若冻结时间特别长的，还要做特殊处理。
 
 
 

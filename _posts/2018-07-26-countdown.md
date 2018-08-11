@@ -3,7 +3,7 @@ layout: post
 keywords: js 倒计时
 description: js实现活动精确倒计时
 title: "倒计时"
-tags: js 倒计时
+tags: [js 倒计时]
 date: 2018-07-26
 categories: js
 cover: 'https://binarycaptain.github.io/assets/img/countdown.png'

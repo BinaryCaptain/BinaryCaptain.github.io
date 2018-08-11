@@ -3,7 +3,7 @@ layout: post
 keywords: spread rest
 description: 剩余参数和扩展运算符
 title: "剩余参数和扩展运算符"
-tags: rest spread 
+tags: [rest spread] 
 date: 2018-08-02
 categories: js
 cover: 'https://binarycaptain.github.io/assets/img/spread.jpg'

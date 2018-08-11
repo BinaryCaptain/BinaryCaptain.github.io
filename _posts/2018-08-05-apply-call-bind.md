@@ -3,7 +3,7 @@ layout: post
 keywords: call apply bind
 description: call apply bind的应用
 title: "call apply bind的应用"
-tags: js 
+tags: [js] 
 date: 2018-08-05
 categories: js
 cover: 'https://binarycaptain.github.io/assets/img/js.jpg'

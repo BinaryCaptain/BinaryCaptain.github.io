@@ -11,7 +11,8 @@ tags: angular
 subtitle: '手写一个angular的$q'
 ---
 
-## $q实现
+## $q 实现
 
+主分支代码 第二次测试
 
-主分支代码
+哈哈哈哈哈

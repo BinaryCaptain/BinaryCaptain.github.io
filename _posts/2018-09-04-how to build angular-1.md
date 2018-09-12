@@ -13,6 +13,6 @@ subtitle: '手写一个angular的$q'
 
 ## $q 实现
 
-test 主干代码 第三次测试
+test 分支代码 第三次测试
 
-afdkljfskldfjs
+hhhhh

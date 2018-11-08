@@ -4,10 +4,10 @@ keywords: call apply
 description: 用原生方法实现call和apply 
 title: "原生方法实现call和apply"
 tags: [call apply]
-date: 2018-09-27
-categories: tcp
+date: 2018-11-07
+categories: call apply
 cover: 'https://binarycaptain.github.io/assets/img/js.jpg'
-tags: tcp
+tags: call apply
 subtitle: '原生方法实现call和apply(低于ES6)'
 ---
 

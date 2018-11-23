@@ -4,7 +4,7 @@ keywords: prototype _proto_
 description: javascript原型到原型链
 title: "javascript原型到原型链"
 tags: [prototype _proto_]
-date: 2018-09-27
+date: 2018-11-08
 categories: prototype _proto_
 cover: 'https://binarycaptain.github.io/assets/img/js.jpg'
 tags: prototype _proto_

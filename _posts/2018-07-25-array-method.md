@@ -11,7 +11,6 @@ subtitle: 'js'
 
 ---
 
-
 ## 改变原数组
 
 pop()---删除数组的最后一个元素并返回删除的元素。
@@ -52,6 +51,52 @@ slice()---选取数组的的一部分，并返回一个新数组。
 
 valueOf()---返回数组对象的原始值。
 
-## 总结
+## 方法本质
+不改变数组的一些方法如：slice  concat  
 
-在使用数组方法时，尽量不要使用改变原数组的一些方法。
+都是浅拷贝，浅拷贝的特点是对于引用类型只复制其地址，而不复制真实的值，因此如果操作当中改变引用类型的值，那么真实的值也会发生改变
+
+在使用数组方法时，尽量不要使用改变原数组的一些方法。下面是浅拷贝和深拷贝的简单实现
+
+浅拷贝实现：
+```javascript
+function shallowCopy(target,source){
+	if(!target || typeof target !== 'object'){
+		return;
+	}
+
+	if(!target || typeof target !== 'object'){
+		return;
+	}
+
+	for(let key in source){
+		if(source.hasOwnProperty(key)){
+			target[key] = source[key]
+		}
+	}
+}
+```
+深拷贝实现：
+```javascript
+function deepCopy(target,source){
+	if(!target || typeof target !=='object'){
+		return;
+	}
+
+	if(!target || typeof target!== 'object'){
+		return;
+	}
+
+	for(let key in source){
+		if(source.hasOwnProperty(key)) {
+			if(source[key] && typeof source[key] == 'object') {
+				target[key] = Array.isArray(source[key]) ? []:{};
+				deepCopy(target[key],source[key]);
+			}else{
+				target[key] = source[key]
+			}
+		}
+	}
+}
+```
+

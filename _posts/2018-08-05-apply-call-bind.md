@@ -69,7 +69,7 @@ var func = function(arg1,arg2) {
 ```javascript
 
 func.call(this,arg1,arg2);
-func.call(this,[arg1,arg2]);
+func.apply(this,[arg1,arg2]);
 
 ```
 其中 this 是你想指定的上下文，他可以是任何一个 JavaScript 对象(JavaScript 中一切皆对象)，call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。　　

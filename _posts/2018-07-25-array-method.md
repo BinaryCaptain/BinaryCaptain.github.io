@@ -8,7 +8,7 @@ date: 2018-07-25
 categories: js
 tags: js
 subtitle: 'js'
-
+cover: 'https://binarycaptain.github.io/assets/img/js.jpg'
 ---
 
 ## 改变原数组

@@ -120,9 +120,85 @@ document.body.innerHTML = template(data)
 
 Dom-based templating 则是从DOM的角度去实现数据的渲染，我们通过遍历DOM树，提取属性与DOM内容，然后将数据写入到DOM树中，从而实现页面渲染。一个简单的例子如下：
 
+```javascript
+
+function MVVM(opt) {
+  this.dom = document.querySelector(opt.el);
+  this.data = opt.data || {};
+  this.renderDom(this.dom);
+}
+
+MVVM.prototype = {
+  init: {
+    sTag: '{{',
+    eTag: '}}'
+  },
+  render: function (node) {
+    var self = this;
+    var sTag = self.init.sTag;
+    var eTag = self.init.eTag;
+
+    var matchs = node.textContent.split(sTag);
+    if (matchs.length){
+      var ret = '';
+      for (var i = 0; i < matchs.length; i++) {
+        var match = matchs[i].split(eTag);
+        if (match.length == 1) {
+            ret += matchs[i];
+        } else {
+            ret = self.data[match[0]];
+        }
+        node.textContent = ret;
+      }
+    }
+  },
+  renderDom: function(dom) {
+    var self = this;
+
+    var attrs = dom.attributes;
+    var nodes = dom.childNodes;
+
+    Array.prototype.forEach.call(attrs, function(item) {
+      self.render(item);
+    });
+
+    Array.prototype.forEach.call(nodes, function(item) {
+      if (item.nodeType === 1) {
+        return self.renderDom(item);
+      }
+      self.render(item);
+    });
+  }
+}
+
+var app = new MVVM({
+  el: '#app',
+  data: {
+    name: 'zhaomenghuan',
+    age: '24',
+    color: 'red'
+  }
+});
 
 
+```
 
+页面渲染的函数 renderDom 是直接遍历DOM树，而不是遍历html字符串。遍历DOM树节点属性（attributes）和子节点（childNodes），然后调用渲染函数render。当DOM树子节点的类型是元素时，递归调用遍历DOM树的方法。根据DOM树节点类型一直遍历子节点，直到文本节点。
+
+render的函数作用是提取{{}}中的关键词，然后使用数据模型中的数据进行替换。我们通过textContent获取Node节点的nodeValue，然后使用字符串的split方法对nodeValue进行分割，提取{{}}中的关键词然后替换为数据模型中的值。
+
+DOM 的相关基础
+
+注：元素类型对应NodeType
+
+元素类型  NodeType
+  元素      1
+  属性      2
+  文本      3
+  注释      8
+  文档      9
+
+childNodes 属性返回包含被选节点的子节点的 NodeList。childNodes包含的不仅仅只有html节点，所有属性，文本、注释等节点都包含在childNodes里面。children只返回元素如input, span, script, div等，不会返回TextNode，注释。
 
 
 
